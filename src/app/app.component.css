@@ -6,6 +6,8 @@
 }
 
 main {
-    background-color: white;
     flex-grow: 1;
+    width: 85%;
+    margin: 10px auto;
+    padding-top: 64px;
 }
