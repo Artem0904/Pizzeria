@@ -11,18 +11,13 @@ import { PizzaModel } from '../services/pizzas';
   styleUrl: './pizzas-list.component.css'
 })
 export class PizzasListComponent implements OnInit {
-  displayedColumns: string[] = ["id", "title", "price", "rating", ];
+  displayedColumns: string[] = ["id", "name", "price", "cookingTimeMin", ];
   pizzas: PizzaModel[] = [];
 
   constructor(private pizzasService: PizzasService) { }
 
   ngOnInit(): void {
-    this.pizzasService.getAll().subscribe(res => {
-     
-     console.log(res);
-     
-      this.pizzas = res.pizzas;
-    });
+    this.pizzasService.getAll().subscribe(res => this.pizzas = res);
   }
 
 

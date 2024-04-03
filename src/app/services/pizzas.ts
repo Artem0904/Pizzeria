@@ -9,14 +9,16 @@
 export interface PizzaModel {
     id: number;
     name: string;
-    categoryId: number;
-    discount: number;
     price: number;
+    cookingTimeMin: number;
+    description: string | null;
+    pizzasSizeId: number;
+    pizzasSizeDiametr: number;
 }
 
-export interface PizzaResponseModel {
-    pizzas: PizzaModel[];
-    limit: number;
-    skip: number;
-    total: number;
-}
+// export interface PizzaResponseModel {
+//     pizzas: PizzaModel[];
+//     limit: number;
+//     skip: number;
+//     total: number;
+// }
