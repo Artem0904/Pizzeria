@@ -22,4 +22,9 @@ export class PizzasService {
     //this.http.delete(api + "products/delete" + id);
     console.log("Deleting product id: " + id);
   }
+
+  create(item: PizzaModel): void {
+    //this.http.post<ProductModel>(api, item);
+    console.log("Creating pizza:", item);
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { PizzasService } from '../services/pizzas.service';
-import { PizzaModel } from '../services/pizzas';
+import { PizzasService } from '../../services/pizzas.service';
+import { PizzaModel } from '../../services/pizzas';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
