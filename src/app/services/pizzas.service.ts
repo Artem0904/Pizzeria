@@ -16,4 +16,10 @@ export class PizzasService {
     console.log("sdfgsdf");
     return this.http.get<PizzaModel[]>(api);
   }
+
+  delete(id: number): void {
+    // TODO: refactor api path
+    //this.http.delete(api + "products/delete" + id);
+    console.log("Deleting product id: " + id);
+  }
 }
