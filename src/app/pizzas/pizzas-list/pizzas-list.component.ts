@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { PizzasService } from '../../services/pizzas.service';
 import { PizzaModel } from '../../services/pizzas';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pizzas-list',
@@ -17,20 +18,34 @@ import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog
 export class PizzasListComponent implements OnInit {
   displayedColumns: string[] = ["id", "name", "price", "cookingTimeMin", "actions"];
   pizzas: PizzaModel[] = [];
+  tableSource = new MatTableDataSource<PizzaModel>([]);
 
   constructor(private pizzasService: PizzasService,
-              public dialog: MatDialog
+              public dialog: MatDialog,
+              private router: Router,
+              private changeDetectorRefs: ChangeDetectorRef
               ) { }
 
   ngOnInit(): void {
-    this.pizzasService.getAll().subscribe(res => this.pizzas = res);
+    this.pizzasService.getAll().subscribe(res => {
+      this.pizzas = res;
+      this.refreshTable();
+    });
   }
 
   onDelete(id: number): void {
     // open confirmation dialog
     this.openConfirmDialog().afterClosed().subscribe(res => {
       if (res === true)
-        this.pizzasService.delete(id);
+        this.pizzasService.delete(id).subscribe(res => {
+
+          const index = this.pizzas.findIndex(x => x.id === id);
+
+          console.log(index);
+          this.pizzas.splice(index, 1);
+          console.log(this.pizzas);
+          this.refreshTable();
+        });
     });
   }
 
@@ -38,4 +53,7 @@ export class PizzasListComponent implements OnInit {
     return this.dialog.open(DeleteConfirmationDialogComponent);
   }
 
+  refreshTable() {
+    this.tableSource.data = this.pizzas;
+  }
 }
