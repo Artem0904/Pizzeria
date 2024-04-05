@@ -3,7 +3,7 @@ import { PizzaModel } from './pizzas';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const api = "https://localhost:7283/api/Pizza/all"; //"https://dummyjson.com/products";
+const api = "https://localhost:7283/api/Pizza/"; //"https://dummyjson.com/products";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,12 @@ export class PizzasService {
 
   getAll(): Observable<PizzaModel[]> {
     console.log("sdfgsdf");
-    return this.http.get<PizzaModel[]>(api);
+    return this.http.get<PizzaModel[]>(api + "all");
   }
 
-  delete(id: number): void {
-    // TODO: refactor api path
-    //this.http.delete(api + "products/delete" + id);
+  delete(id: number): Observable<any> {
     console.log("Deleting product id: " + id);
+    return this.http.delete(api + id);
   }
 
   create(item: PizzaModel): void {
