@@ -16,6 +16,14 @@ export interface PizzaModel {
     pizzasSizeDiametr: number;
 }
 
+export interface CreatePizzaModel {
+    name: string;
+    pizzasSizeId: number;
+    price: number;
+    description: string | null;
+    cookingTimeMin: number;
+}
+
 // export interface PizzaResponseModel {
 //     pizzas: PizzaModel[];
 //     limit: number;

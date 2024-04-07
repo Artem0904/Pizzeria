@@ -4,9 +4,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PizzasService } from '../../services/pizzas.service';
-import { PizzaModel } from '../../services/pizzas';
+import { CreatePizzaModel, PizzaModel } from '../../services/pizzas';
 
 @Component({
   selector: 'app-add-pizza',
@@ -37,7 +37,9 @@ export class AddPizzaComponent {
   onSubmit(): void {
     if (!this.form.valid) return;
 
-    const item = this.form.value as PizzaModel;
-    this.service.create(item);
+    const item = this.form.value as CreatePizzaModel;
+    this.service.create(item).subscribe(res => {
+      console.log(res);
+    });
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { PizzaModel } from './pizzas';
-import { HttpClient } from '@angular/common/http';
+import { CreatePizzaModel, PizzaModel } from './pizzas';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const api = "https://localhost:7283/api/Pizza/"; //"https://dummyjson.com/products";
@@ -22,8 +22,16 @@ export class PizzasService {
     return this.http.delete(api + id);
   }
 
-  create(item: PizzaModel): void {
-    //this.http.post<ProductModel>(api, item);
+  create(item: CreatePizzaModel): Observable<any> {
     console.log("Creating pizza:", item);
+
+    const formData = new FormData();
+
+    for (const key in item) {
+      formData.append(key, item[key as keyof CreatePizzaModel] as string | Blob);
+    }
+
+    const headers = new HttpHeaders({ 'enctype': 'multipart/form-data' });
+    return this.http.post(api, formData, { headers: headers });
   }
 }

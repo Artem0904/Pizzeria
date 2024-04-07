@@ -16,15 +16,13 @@ import { Router } from '@angular/router';
   styleUrl: './pizzas-list.component.css'
 })
 export class PizzasListComponent implements OnInit {
-  displayedColumns: string[] = ["id", "name", "price", "cookingTimeMin", "actions"];
+  displayedColumns: string[] = ["id", "name", "price", "cookingTimeMin", "pizzasSizeDiametr" , "actions"];
   pizzas: PizzaModel[] = [];
   tableSource = new MatTableDataSource<PizzaModel>([]);
 
   constructor(private pizzasService: PizzasService,
               public dialog: MatDialog,
-              private router: Router,
-              private changeDetectorRefs: ChangeDetectorRef
-              ) { }
+              private router: Router)  { }
 
   ngOnInit(): void {
     this.pizzasService.getAll().subscribe(res => {
@@ -43,7 +41,6 @@ export class PizzasListComponent implements OnInit {
 
           console.log(index);
           this.pizzas.splice(index, 1);
-          console.log(this.pizzas);
           this.refreshTable();
         });
     });
