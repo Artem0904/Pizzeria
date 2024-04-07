@@ -17,6 +17,15 @@ export class PizzasService {
     return this.http.get<PizzaModel[]>(api + "all");
   }
 
+  get(id: number): Observable<PizzaModel> {
+    console.log("geting product id: " + id);
+    return this.http.get<PizzaModel>(api + id);
+  }
+
+  edit(pizza: PizzaModel): Observable<any> {
+    return this.http.put<PizzaModel>(api, pizza);
+  }
+
   delete(id: number): Observable<any> {
     console.log("Deleting product id: " + id);
     return this.http.delete(api + id);

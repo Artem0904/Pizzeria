@@ -31,6 +31,11 @@ export class PizzasListComponent implements OnInit {
     });
   }
 
+  onEdit(id: number): void {
+    // open edit page
+    this.router.navigate(["/edit", id]);
+  }
+  
   onDelete(id: number): void {
     // open confirmation dialog
     this.openConfirmDialog().afterClosed().subscribe(res => {

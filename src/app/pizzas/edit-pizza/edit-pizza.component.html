@@ -2,12 +2,12 @@
     <button (click)="back()" mat-icon-button>
         <mat-icon>arrow_back</mat-icon>
     </button>
-    <span>Create New Product</span>
+    <span>Edit pizza</span>
 </h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input formControlName="name" required matInput placeholder="Enter pizza name">
+        <input formControlName="name" required matInput placeholder="Enter product name">
     </mat-form-field>
 
     <div class="col-2">
@@ -16,9 +16,9 @@
             <input formControlName="price" required matInput type="number" step="100" placeholder="0">
             <span matTextPrefix>$&nbsp;</span>
         </mat-form-field>
-        
+
         <mat-form-field floatLabel="always" style="flex-basis: 35%;">
-            <mat-label>cooking Time(m)</mat-label>
+            <mat-label>Cooking Time</mat-label>
             <input formControlName="cookingTimeMin" matInput type="number" step="5" placeholder="0">
             <span matTextPrefix>min&nbsp;</span>
         </mat-form-field>
@@ -41,7 +41,7 @@
     </mat-form-field>
 
     <div class="buttons-block">
-        <button type="reset" mat-raised-button>Cancel</button>
-        <button type="submit" mat-raised-button color="accent">Create</button>
+        <button (click)="onCancel()" type="button" mat-raised-button>Cancel</button>
+        <button type="submit" mat-raised-button color="accent">Edit</button>
     </div>
 </form>
