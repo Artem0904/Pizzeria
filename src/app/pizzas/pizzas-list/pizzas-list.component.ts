@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './pizzas-list.component.css'
 })
 export class PizzasListComponent implements OnInit {
-  displayedColumns: string[] = ["id", "name", "price", "cookingTimeMin", "pizzasSizeDiametr" , "actions"];
+  displayedColumns: string[] = ["id", "name", "price", "cookingTimeMin", "pizzaSizeDiametr" , "actions"];
   pizzas: PizzaModel[] = [];
   tableSource = new MatTableDataSource<PizzaModel>([]);
 

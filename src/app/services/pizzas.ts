@@ -1,10 +1,3 @@
-// export interface PizzaModel {
-//     id: number;
-//     name: string;
-//     price: number;
-//     pizzasSizeId: number;
-//     cookingTimeMin: number;
-// }
 
 export interface PizzaModel {
     id: number;
@@ -12,16 +5,21 @@ export interface PizzaModel {
     price: number;
     cookingTimeMin: number;
     description: string | null;
-    pizzasSizeId: number;
-    pizzasSizeDiametr: number;
+    pizzaSizeId: number;
+    pizzaSizeDiametr: number;
 }
 
 export interface CreatePizzaModel {
     name: string;
-    pizzasSizeId: number;
+    pizzaSizeId: number;
     price: number;
     description: string | null;
     cookingTimeMin: number;
+}
+
+export interface PizzaSizeModel {
+    id: number;
+    pizzaSizeDiametr: number;
 }
 
 // export interface PizzaResponseModel {

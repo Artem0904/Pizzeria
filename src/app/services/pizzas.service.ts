@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CreatePizzaModel, PizzaModel } from './pizzas';
+import { PizzaSizeModel, CreatePizzaModel, PizzaModel } from './pizzas';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class PizzasService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<PizzaModel[]> {
-    console.log("sdfgsdf");
+    console.log("get all");
     return this.http.get<PizzaModel[]>(api + "all");
   }
 
@@ -33,5 +33,10 @@ export class PizzasService {
 
     const headers = new HttpHeaders({ 'enctype': 'multipart/form-data' });
     return this.http.post(api, formData, { headers: headers });
+  }
+
+  getPizzaSizes(): Observable<PizzaSizeModel[]> {
+    console.log("get pizza sizes")
+    return this.http.get<PizzaSizeModel[]>(api + "pizzaSizes");
   }
 }
