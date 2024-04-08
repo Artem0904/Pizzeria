@@ -7,6 +7,7 @@ export interface PizzaModel {
     description: string | null;
     pizzaSizeId: number;
     pizzaSizeDiametr: number;
+    imageUrl: string | null;
 }
 
 export interface CreatePizzaModel {
@@ -15,6 +16,7 @@ export interface CreatePizzaModel {
     price: number;
     description: string | null;
     cookingTimeMin: number;
+    // ImageUrl: string | null;
 }
 
 export interface PizzaSizeModel {

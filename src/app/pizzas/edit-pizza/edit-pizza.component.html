@@ -7,7 +7,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input formControlName="name" required matInput placeholder="Enter product name">
+        <input formControlName="name" required matInput placeholder="Enter piiza name">
     </mat-form-field>
 
     <div class="col-2">
@@ -33,6 +33,11 @@
             </mat-option>
             }
         </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Image URL</mat-label>
+        <textarea formControlName="imageUrl" required matInput placeholder="Enter image URL"></textarea>
     </mat-form-field>
 
     <mat-form-field>

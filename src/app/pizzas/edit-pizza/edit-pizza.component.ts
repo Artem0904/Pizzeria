@@ -56,7 +56,8 @@ export class EditPizzaComponent implements OnInit {
         description: ['', Validators.minLength(10)],
         pizzaSizeId: [0, [Validators.required, Validators.min(1)]],
         // imageUrl: ['', Validators.required],
-        pizzaSizeDiametr: [Validators.min(1)]
+        pizzaSizeDiametr: [Validators.min(1)],
+        imageUrl: ['', Validators.required]
       });
     }
 

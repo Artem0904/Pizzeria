@@ -32,6 +32,7 @@ export class AddPizzaComponent implements OnInit {
     cookingTimeMin: [0],
     description: [''],
     pizzaSizeId: [0],
+    imageUrl: ['']
   });
 
   pizzaSizes: PizzaSizeModel[] = [];
