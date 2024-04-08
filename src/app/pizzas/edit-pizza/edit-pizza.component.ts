@@ -65,8 +65,10 @@ export class EditPizzaComponent implements OnInit {
 
     this.id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.service.getPizzaSizes().subscribe(res => this.pizzaSizes = res);
-
+    this.service.getPizzaSizes().subscribe((res) => {
+      this.pizzaSizes = res;
+      console.log(this.pizzaSizes);
+    } );
     this.service.get(this.id).subscribe(res => {
       console.log(res);
 

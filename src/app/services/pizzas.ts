@@ -19,7 +19,7 @@ export interface CreatePizzaModel {
 
 export interface PizzaSizeModel {
     id: number;
-    pizzaSizeDiametr: number;
+    diametr: number;
 }
 
 // export interface PizzaResponseModel {
